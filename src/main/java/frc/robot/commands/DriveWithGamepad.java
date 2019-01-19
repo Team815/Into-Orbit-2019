@@ -10,13 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveWithTriggers extends Command {
-  public DriveWithTriggers() {
+public class DriveWithGamepad extends Command {
+  public DriveWithGamepad() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-
     requires(Robot.drivetrain);
-
   }
 
   // Called just before this Command runs the first time
@@ -27,15 +25,11 @@ public class DriveWithTriggers extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
     Robot.drivetrain.drive(
       Robot.m_oi.driverController.getRawAxis(0),
       Robot.m_oi.driverController.getRawAxis(1),
       Robot.m_oi.driverController.getRawAxis(4)
     );
-
-
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()

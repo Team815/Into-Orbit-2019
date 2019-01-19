@@ -45,8 +45,4 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public Joystick driverController = new Joystick(0);
-  
-
-
-
 }
