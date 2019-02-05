@@ -47,8 +47,8 @@ public class RobotMap {
   public static int buttonPortDpadRight;
 
   
-  public static final int MOTOR_PORT_FRONT_RIGHT = 4;
-	public static final int MOTOR_PORT_REAR_RIGHT = 7;
-	public static final int MOTOR_PORT_FRONT_LEFT = 10;
-  public static final int MOTOR_PORT_REAR_LEFT = 3;
+  public static final int MOTOR_PORT_FRONT_RIGHT = 3;
+	public static final int MOTOR_PORT_REAR_RIGHT = 1;
+	public static final int MOTOR_PORT_FRONT_LEFT = 4;
+  public static final int MOTOR_PORT_REAR_LEFT = 2;
 }
