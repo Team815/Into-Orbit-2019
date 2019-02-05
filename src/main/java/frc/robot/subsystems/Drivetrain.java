@@ -20,11 +20,17 @@ public class Drivetrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  public double speedModifier;
+
   WPI_VictorSPX motorFrontRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_RIGHT);
   WPI_VictorSPX motorRearRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_RIGHT);
   WPI_VictorSPX motorFrontLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_LEFT);
   WPI_VictorSPX motorRearLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_LEFT);
   MecanumDrive mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
+
+  public Drivetrain(){
+    speedModifier = 1;
+  }
 
   @Override
   public void initDefaultCommand() {

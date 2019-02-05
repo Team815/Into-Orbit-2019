@@ -26,9 +26,9 @@ public class DriveWithGamepad extends Command {
   @Override
   protected void execute() {
     Robot.drivetrain.drive(
-      Robot.oi.driverController.getRawAxis(0),
-      Robot.oi.driverController.getRawAxis(1),
-      Robot.oi.driverController.getRawAxis(4)
+      Robot.oi.driverController.getRawAxis(0)*Robot.drivetrain.speedModifier,
+      Robot.oi.driverController.getRawAxis(1)*Robot.drivetrain.speedModifier,
+      Robot.oi.driverController.getRawAxis(4)*Robot.drivetrain.speedModifier
     );
   }
 
