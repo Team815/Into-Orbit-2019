@@ -10,8 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.ManuallyDecreaseSpeed;
-import frc.robot.commands.ManuallyIncreaseSpeed;
+import frc.robot.commands.AdjustMaxSpeed;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -56,8 +55,8 @@ public class OI {
     LB = new JoystickButton(driverController, RobotMap.buttonPortLB);
     RB = new JoystickButton(driverController, RobotMap.buttonPortRB);
 
-    LB.whenPressed(new ManuallyDecreaseSpeed());
-    RB.whenPressed(new ManuallyIncreaseSpeed());
+    LB.whenPressed(new AdjustMaxSpeed(-0.1));
+    RB.whenPressed(new AdjustMaxSpeed(0.1));
   }
 
 }

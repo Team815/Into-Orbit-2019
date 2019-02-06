@@ -17,10 +17,9 @@ import frc.robot.commands.DriveWithGamepad;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
-  // WPI_VictorSPX motorFrontRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_RIGHT);
-  // WPI_VictorSPX motorRearRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_RIGHT);
-  // WPI_VictorSPX motorFrontLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_LEFT);
-  // WPI_VictorSPX motorRearLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_LEFT);
+
+  public final double SPEED_MODIFIER_MIN = 0.2;
+  public final double SPEED_MODIFIER_MAX = 1;
   
   public double speedModifier;
   MecanumDrive mecanumDrive;
