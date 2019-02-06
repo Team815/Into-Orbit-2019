@@ -24,22 +24,23 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  public static int buttonPortA = 1;
-  public static int buttonPortB = 2;
-  public static int buttonPortX = 3;
-  public static int buttonPortY = 4;
+  public static final int AXIS_PORT_LJX = 0; // Left Joystick - X
+  public static final int AXIS_PORT_LJY = 1; // Left Joystick - Y
+  public static final int AXIS_PORT_LT = 2; // Left Trigger
+  public static final int AXIS_PORT_RT = 3; // Right Trigger
+  public static final int AXIS_PORT_RJX = 4; // Right Joystick - X
+  public static final int AXIS_PORT_RJY = 5; // Right Joystick - Y
 
-  public static int buttonPortLB = 5;
-  public static int buttonPortRB = 6;
-
-  public static int buttonPortLT;
-  public static int buttonPortRT;
-
-  public static int buttonPortL3 = 9;
-  public static int buttonPortR3 = 10;
-
-  public static int buttonPortSelect = 7;
-  public static int buttonPortStart = 8;
+  public static final int BUTTON_PORT_A = 1;
+  public static final int BUTTON_PORT_B = 2;
+  public static final int BUTTON_PORT_X = 3;
+  public static final int BUTTON_PORT_Y = 4;
+  public static final int BUTTON_PORT_LB = 5; // Left Bumper
+  public static final int BUTTON_PORT_RB = 6; // Right Bumber
+  public static final int BUTTON_PORT_SELECT = 7;
+  public static final int BUTTON_PORT_START = 8;
+  public static final int BUTTON_PORT_LJ = 9; // Left Joystick
+  public static final int BUTTON_PORT_RJ = 10; // Right Joystick
 
   public static int buttonPortDpadUp;
   public static int buttonPortDpadDown;

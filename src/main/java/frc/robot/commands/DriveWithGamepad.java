@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class DriveWithGamepad extends Command {
   public DriveWithGamepad() {
@@ -26,9 +27,9 @@ public class DriveWithGamepad extends Command {
   @Override
   protected void execute() {
     Robot.drivetrain.drive(
-      Robot.oi.driverController.getRawAxis(0)*Robot.drivetrain.speedModifier,
-      Robot.oi.driverController.getRawAxis(1)*Robot.drivetrain.speedModifier,
-      Robot.oi.driverController.getRawAxis(4)*Robot.drivetrain.speedModifier
+      Robot.oi.driverController.getRawAxis(RobotMap.AXIS_PORT_LJX)*Robot.drivetrain.speedModifier,
+      Robot.oi.driverController.getRawAxis(RobotMap.AXIS_PORT_LJY)*Robot.drivetrain.speedModifier,
+      Robot.oi.driverController.getRawAxis(RobotMap.AXIS_PORT_RJX)*Robot.drivetrain.speedModifier
     );
   }
 

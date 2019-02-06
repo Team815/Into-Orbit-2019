@@ -52,8 +52,8 @@ public class OI {
   public Button RB;
   
   public OI (){
-    LB = new JoystickButton(driverController, RobotMap.buttonPortLB);
-    RB = new JoystickButton(driverController, RobotMap.buttonPortRB);
+    LB = new JoystickButton(driverController, RobotMap.BUTTON_PORT_LB);
+    RB = new JoystickButton(driverController, RobotMap.BUTTON_PORT_RB);
 
     LB.whenPressed(new AdjustMaxSpeed(-0.1));
     RB.whenPressed(new AdjustMaxSpeed(0.1));
