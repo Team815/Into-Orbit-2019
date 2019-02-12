@@ -47,7 +47,6 @@ public class Drivetrain extends Subsystem {
 
   public void drive(double y, double x, double z) {
     mecanumDrive.driveCartesian(y, x, z, gyro.getAngle());
-    System.out.println(gyro.getAngle());
   }
 
   public void resetGyro() {
