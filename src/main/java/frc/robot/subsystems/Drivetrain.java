@@ -8,8 +8,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithGamepad;
 
@@ -23,6 +26,7 @@ public class Drivetrain extends Subsystem {
   
   public double speedModifier;
   MecanumDrive mecanumDrive;
+  private Gyro gyro = new AnalogGyro(0);
 
   public Drivetrain(){
     final WPI_TalonSRX motorFrontRight = new WPI_TalonSRX(RobotMap.MOTOR_PORT_FRONT_RIGHT);
@@ -42,6 +46,11 @@ public class Drivetrain extends Subsystem {
   }
 
   public void drive(double y, double x, double z) {
-    mecanumDrive.driveCartesian(y, x, z);
+    mecanumDrive.driveCartesian(y, x, z, gyro.getAngle());
+    System.out.println(gyro.getAngle());
+  }
+
+  public void resetGyro() {
+    gyro.reset();
   }
 }
