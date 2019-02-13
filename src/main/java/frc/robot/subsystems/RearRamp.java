@@ -33,8 +33,15 @@ public class RearRamp extends Subsystem {
     rearRampMotorLeft = new WPI_TalonSRX(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT);
     rearRampMotorRight.setInverted(true);
     rearRampMotors = new SpeedControllerGroup(rearRampMotorRight, rearRampMotorLeft);
-    encoderRight = new Encoder(0,1);
-    encoderLeft = new Encoder(7,8);
+    encoderRight = new Encoder(
+      RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[0], 
+      RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[1]
+    );
+
+    encoderLeft = new Encoder(
+      RobotMap.ENCODER_PORT_REAR_RAMP_LEFT[0], 
+      RobotMap.ENCODER_PORT_REAR_RAMP_LEFT[1]
+    );
     encoderMaxValue = 1000;
 
   }
