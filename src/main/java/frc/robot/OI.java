@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
+import frc.robot.commands.LowerRearRamp;
+import frc.robot.commands.RaiseRearRamp;
 import frc.robot.commands.ResetPlayerAngle;
 
 /**
@@ -52,15 +54,22 @@ public class OI {
   public Button LB;
   public Button RB;
   public Button B;
+  public Button DpadUp;
+  public Button DpadDown;
+  
   
   public OI (){
     LB = new JoystickButton(driverController, RobotMap.BUTTON_PORT_LB);
     RB = new JoystickButton(driverController, RobotMap.BUTTON_PORT_RB);
     B = new JoystickButton(driverController, RobotMap.BUTTON_PORT_B);
+    DpadUp = new JoystickButton(driverController, RobotMap.buttonPortDpadUp);
+    DpadDown = new JoystickButton(driverController, RobotMap.buttonPortDpadDown);
 
     LB.whenPressed(new AdjustMaxSpeed(-0.1));
     RB.whenPressed(new AdjustMaxSpeed(0.1));
     B.whenPressed(new ResetPlayerAngle());
+    DpadUp.whenPressed(new RaiseRearRamp());
+    DpadDown.whenPressed(new LowerRearRamp());
   }
 
 }

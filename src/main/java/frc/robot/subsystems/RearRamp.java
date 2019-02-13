@@ -9,10 +9,11 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.LowerRearRamp;
+import frc.robot.commands.ManuallyControlRearRamp;
 
 /**
  * Add your docs here.
@@ -23,23 +24,46 @@ public class RearRamp extends Subsystem {
   WPI_TalonSRX rearRampMotorRight;
   WPI_TalonSRX rearRampMotorLeft;
   SpeedControllerGroup rearRampMotors;
+  Encoder encoderRight;
+  Encoder encoderLeft;
+  private int encoderMaxValue;
 
   public RearRamp (){
     rearRampMotorRight = new WPI_TalonSRX(RobotMap.MOTOR_PORT_REAR_RAMP_RIGHT);
     rearRampMotorLeft = new WPI_TalonSRX(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT);
     rearRampMotorRight.setInverted(true);
     rearRampMotors = new SpeedControllerGroup(rearRampMotorRight, rearRampMotorLeft);
+    encoderRight = new Encoder(0,1);
+    encoderLeft = new Encoder(7,8);
+    encoderMaxValue = 1000;
+
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new LowerRearRamp());
+    setDefaultCommand(new ManuallyControlRearRamp());
   }
 
-public void lower(double speed){
+public void moveRamp(double speed){
   rearRampMotors.set(-speed);
+}
+
+public void lowerRamp(){
+  while(encoderLeft.get() < encoderMaxValue ||
+   encoderRight.get() < encoderMaxValue){
+    rearRampMotors.set(-.5);
+  }
+  rearRampMotors.set(0);
+}
+
+public void raiseRamp(){
+  while(encoderLeft.get() > 0 ||
+   encoderRight.get() > 0 ){
+    rearRampMotors.set(0.5);
+  }
+  rearRampMotors.set(0);
 }
 
 }

@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.RearRamp;
 
 public class LowerRearRamp extends Command {
   public LowerRearRamp() {
@@ -26,13 +25,13 @@ public class LowerRearRamp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.rearRamp.lower(Robot.oi.driverController.getRawAxis(2) * 0.5);
+    Robot.rearRamp.lowerRamp();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
