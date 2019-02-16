@@ -49,6 +49,7 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public Joystick controllerDriver = new Joystick(0);
+  public Joystick controllerOperator = new Joystick(1);
   public Button LB;
   public Button RB;
   public Button B;
@@ -57,11 +58,15 @@ public class OI {
   public OI (){
     LB = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_LB);
     RB = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_RB);
-    B = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_B);
+    //B = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_B);
+    //DpadUp = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadUp);
+    //DpadDown = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadDown);
 
     LB.whenPressed(new AdjustMaxSpeed(-0.1));
     RB.whenPressed(new AdjustMaxSpeed(0.1));
-    B.whenPressed(new ResetPlayerAngle());
+    //B.whenPressed(new ResetPlayerAngle());
+    //DpadUp.whenPressed(new RaiseRearRamp());
+    //DpadDown.whenPressed(new LowerRearRamp());
   }
 
 }

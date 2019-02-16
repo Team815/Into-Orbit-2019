@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Ramp;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,8 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static OI oi;
+  public static Ramp frontRamp;
+  public static Ramp rearRamp;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -36,9 +39,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     drivetrain = new Drivetrain();
     oi = new OI();
-    // m_oi = new OI();
-    //m_chooser.setDefaultOption("Default Auto", new Drivetrain());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    frontRamp = new Ramp(RobotMap.MOTOR_PORT_FRONT_RAMP_LEFT, RobotMap.MOTOR_PORT_FRONT_RAMP_RIGHT, RobotMap.AXIS_PORT_LJY);
+    //rearRamp = new Ramp(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT, RobotMap.MOTOR_PORT_REAR_RAMP_RIGHT, RobotMap.AXIS_PORT_RJY);
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
