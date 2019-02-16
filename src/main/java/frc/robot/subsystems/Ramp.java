@@ -9,10 +9,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import frc.robot.commands.MoveRamp;
 
 /**
@@ -21,9 +19,9 @@ import frc.robot.commands.MoveRamp;
 public class Ramp extends Subsystem {
 
   SpeedControllerGroup motors;
-  Encoder encoderRight;
-  Encoder encoderLeft;
-  private int encoderMaxValue;
+  //Encoder encoderRight;
+  //Encoder encoderLeft;
+  //private int encoderMaxValue;
   private int inputPort;
 
   public Ramp (int portMotorLeft, int portMotorRight, int inputPort) {
@@ -32,6 +30,7 @@ public class Ramp extends Subsystem {
     motorRight.setInverted(true);
     motors = new SpeedControllerGroup(motorLeft, motorRight);
     this.inputPort = inputPort;
+    /*
     encoderRight = new Encoder(
       RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[0], 
       RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[1]
@@ -42,7 +41,7 @@ public class Ramp extends Subsystem {
       RobotMap.ENCODER_PORT_REAR_RAMP_LEFT[1]
     );
     encoderMaxValue = 1000;
-
+    */
   }
 
   @Override
@@ -55,6 +54,7 @@ public void move(double speed) {
   motors.set(speed);
 }
 
+/*
 public void lowerRamp() {
   while(encoderLeft.get() < encoderMaxValue ||
    encoderRight.get() < encoderMaxValue){
@@ -70,5 +70,6 @@ public void raiseRamp(){
   }
   motors.set(0);
 }
+*/
 
 }

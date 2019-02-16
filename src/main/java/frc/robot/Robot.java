@@ -25,8 +25,8 @@ import frc.robot.subsystems.Ramp;
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static OI oi;
-  public static Ramp frontRamp;
-  public static Ramp rearRamp;
+  public static Ramp rampFront;
+  public static Ramp rampRear;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     drivetrain = new Drivetrain();
     oi = new OI();
-    frontRamp = new Ramp(RobotMap.MOTOR_PORT_FRONT_RAMP_LEFT, RobotMap.MOTOR_PORT_FRONT_RAMP_RIGHT, RobotMap.AXIS_PORT_LJY);
-    //rearRamp = new Ramp(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT, RobotMap.MOTOR_PORT_REAR_RAMP_RIGHT, RobotMap.AXIS_PORT_RJY);
+    rampFront = new Ramp(RobotMap.MOTOR_PORT_FRONT_RAMP_LEFT, RobotMap.MOTOR_PORT_FRONT_RAMP_RIGHT, RobotMap.AXIS_PORT_LJY);
+    rampRear = new Ramp(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT, RobotMap.MOTOR_PORT_REAR_RAMP_RIGHT, RobotMap.AXIS_PORT_RJY);
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
