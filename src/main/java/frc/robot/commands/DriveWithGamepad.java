@@ -25,9 +25,9 @@ public class DriveWithGamepad extends Command {
   @Override
   protected void execute() {
     Robot.drivetrain.drive(
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJX),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJY),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_RJX)
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJX),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJY),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_RJX)
     );
   }
 

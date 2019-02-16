@@ -27,10 +27,10 @@ public class Drivetrain extends Subsystem {
   private Gyro gyro = new AnalogGyro(0);
 
   public Drivetrain(){
-    final CANSparkMax motorFrontLeft = new CANSparkMax(RobotMap.MOTOR_PORT_FRONT_LEFT, MotorType.kBrushless);
-    final CANSparkMax motorFrontRight = new CANSparkMax(RobotMap.MOTOR_PORT_FRONT_RIGHT, MotorType.kBrushless);
-    final CANSparkMax motorRearLeft = new CANSparkMax(RobotMap.MOTOR_PORT_REAR_LEFT, MotorType.kBrushless);
-    final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.MOTOR_PORT_REAR_RIGHT, MotorType.kBrushless);
+    final CANSparkMax motorFrontLeft = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_FRONT_LEFT, MotorType.kBrushless);
+    final CANSparkMax motorFrontRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_FRONT_RIGHT, MotorType.kBrushless);
+    final CANSparkMax motorRearLeft = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_LEFT, MotorType.kBrushless);
+    final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_RIGHT, MotorType.kBrushless);
 
     mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
     speedModifier = 1;

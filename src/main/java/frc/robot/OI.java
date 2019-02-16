@@ -56,8 +56,8 @@ public class OI {
 
   
   public OI (){
-    LB = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_LB);
-    RB = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_RB);
+    LB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_LB);
+    RB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
     //B = new JoystickButton(controllerDriver, RobotMap.BUTTON_PORT_B);
     //DpadUp = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadUp);
     //DpadDown = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadDown);

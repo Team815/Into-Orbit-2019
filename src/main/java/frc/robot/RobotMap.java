@@ -24,40 +24,44 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  public static final int AXIS_PORT_LJX = 0; // Left Joystick - X
-  public static final int AXIS_PORT_LJY = 1; // Left Joystick - Y
-  public static final int AXIS_PORT_LT = 2; // Left Trigger
-  public static final int AXIS_PORT_RT = 3; // Right Trigger
-  public static final int AXIS_PORT_RJX = 4; // Right Joystick - X
-  public static final int AXIS_PORT_RJY = 5; // Right Joystick - Y
+  public static final int PORT_AXIS_LJX = 0; // Left Joystick - X
+  public static final int PORT_AXIS_LJY = 1; // Left Joystick - Y
+  public static final int PORT_AXIS_LT = 2; // Left Trigger
+  public static final int PORT_AXIS_RT = 3; // Right Trigger
+  public static final int PORT_AXIS_RJX = 4; // Right Joystick - X
+  public static final int PORT_AXIS_RJY = 5; // Right Joystick - Y
 
-  public static final int BUTTON_PORT_A = 1;
-  public static final int BUTTON_PORT_B = 2;
-  public static final int BUTTON_PORT_X = 3;
-  public static final int BUTTON_PORT_Y = 4;
-  public static final int BUTTON_PORT_LB = 5; // Left Bumper
-  public static final int BUTTON_PORT_RB = 6; // Right Bumber
-  public static final int BUTTON_PORT_SELECT = 7;
-  public static final int BUTTON_PORT_START = 8;
-  public static final int BUTTON_PORT_LJ = 9; // Left Joystick
-  public static final int BUTTON_PORT_RJ = 10; // Right Joystick
+  public static final int PORT_BUTTON_A = 1;
+  public static final int PORT_BUTTON_B = 2;
+  public static final int PORT_BUTTON_X = 3;
+  public static final int PORT_BUTTON_Y = 4;
+  public static final int PORT_BUTTON_LB = 5; // Left Bumper
+  public static final int PORT_BUTTON_RB = 6; // Right Bumber
+  public static final int PORT_BUTTON_SELECT = 7;
+  public static final int PORT_BUTTON_START = 8;
+  public static final int PORT_BUTTON_LJ = 9; // Left Joystick
+  public static final int PORT_BUTTON_RJ = 10; // Right Joystick
 
-  public static int buttonPortDpadUp;
-  public static int buttonPortDpadDown;
-  public static int buttonPortDpadLeft;
-  public static int buttonPortDpadRight;
+  public static int PORT_DPAD_UP;
+  public static int PORT_DPAD_UP_RIGHT;
+  public static int PORT_DPAD_RIGHT;
+  public static int PORT_DPAD_DOWN_RIGHT;
+  public static int PORT_DPAD_DOWN;
+  public static int PORT_DPAD_DOWN_LEFT;
+  public static int PORT_DPAD_LEFT;
+  public static int PORT_DPAD_UP_LEFT;
 
   
-  public static final int MOTOR_PORT_FRONT_RIGHT = 3;
-	public static final int MOTOR_PORT_REAR_RIGHT = 1;
-	public static final int MOTOR_PORT_FRONT_LEFT = 4;
-  public static final int MOTOR_PORT_REAR_LEFT = 2;
+  public static final int PORT_MOTOR_DRIVE_FRONT_RIGHT = 3;
+	public static final int PORT_MOTOR_DRIVE_REAR_RIGHT = 1;
+	public static final int PORT_MOTOR_DRIVE_FRONT_LEFT = 4;
+  public static final int PORT_MOTOR_DRIVE_REAR_LEFT = 2;
 
-  public static final int MOTOR_PORT_FRONT_RAMP_LEFT = 5;
-  public static final int MOTOR_PORT_FRONT_RAMP_RIGHT = 6;
-  public static final int MOTOR_PORT_REAR_RAMP_LEFT = 7;
-  public static final int MOTOR_PORT_REAR_RAMP_RIGHT = 8;
+  public static final int PORT_MOTOR_RAMP_FRONT_LEFT = 5;
+  public static final int PORT_MOTOR_RAMP_FRONT_RIGHT = 6;
+  public static final int PORT_MOTOR_RAMP_REAR_LEFT = 7;
+  public static final int PORT_MOTOR_RAMP_REAR_RIGHT = 8;
 
-  public static final int[] ENCODER_PORT_REAR_RAMP_RIGHT = {0,1};
-  public static final int[] ENCODER_PORT_REAR_RAMP_LEFT = {7,8};
+  public static final int[] PORT_ENCODER_RAMP_REAR_RIGHT = {0,1};
+  public static final int[] PORT_ENCODER_RAMP_REAR_LEFT = {7,8};
 }

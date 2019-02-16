@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     drivetrain = new Drivetrain();
     oi = new OI();
-    rampFront = new Ramp(RobotMap.MOTOR_PORT_FRONT_RAMP_LEFT, RobotMap.MOTOR_PORT_FRONT_RAMP_RIGHT, RobotMap.AXIS_PORT_LJY);
-    rampRear = new Ramp(RobotMap.MOTOR_PORT_REAR_RAMP_LEFT, RobotMap.MOTOR_PORT_REAR_RAMP_RIGHT, RobotMap.AXIS_PORT_RJY);
+    rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT, RobotMap.PORT_AXIS_LJY);
+    rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
