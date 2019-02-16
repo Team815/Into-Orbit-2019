@@ -7,29 +7,30 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithGamepad;
 
-/**
- * Add your docs here.
- */
 public class Drivetrain extends Subsystem {
-  // WPI_VictorSPX motorFrontRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_RIGHT);
-  // WPI_VictorSPX motorRearRight = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_RIGHT);
-  // WPI_VictorSPX motorFrontLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_FRONT_LEFT);
-  // WPI_VictorSPX motorRearLeft = new WPI_VictorSPX(RobotMap.MOTOR_PORT_REAR_LEFT);
+
+  public final double SPEED_MODIFIER_MIN = 0.2;
+  public final double SPEED_MODIFIER_MAX = 1;
   
   public double speedModifier;
-  MecanumDrive mecanumDrive;
+  private MecanumDrive mecanumDrive;
+  private Gyro gyro = new AnalogGyro(0);
 
   public Drivetrain(){
-    final WPI_TalonSRX motorFrontRight = new WPI_TalonSRX(RobotMap.MOTOR_PORT_FRONT_RIGHT);
-    final WPI_TalonSRX motorRearRight = new WPI_TalonSRX(RobotMap.MOTOR_PORT_REAR_RIGHT);
-    final WPI_TalonSRX motorFrontLeft = new WPI_TalonSRX(RobotMap.MOTOR_PORT_FRONT_LEFT);
-    final WPI_TalonSRX motorRearLeft = new WPI_TalonSRX(RobotMap.MOTOR_PORT_REAR_LEFT);
+    final CANSparkMax motorFrontLeft = new CANSparkMax(RobotMap.MOTOR_PORT_FRONT_LEFT, MotorType.kBrushless);
+    final CANSparkMax motorFrontRight = new CANSparkMax(RobotMap.MOTOR_PORT_FRONT_RIGHT, MotorType.kBrushless);
+    final CANSparkMax motorRearLeft = new CANSparkMax(RobotMap.MOTOR_PORT_REAR_LEFT, MotorType.kBrushless);
+    final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.MOTOR_PORT_REAR_RIGHT, MotorType.kBrushless);
 
     mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
     speedModifier = 1;
@@ -37,12 +38,20 @@ public class Drivetrain extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new DriveWithGamepad());
   }
 
   public void drive(double y, double x, double z) {
-    mecanumDrive.driveCartesian(y, x, z);
+    y = Math.abs(y) < 0.1 ? 0 : y;
+    x = Math.abs(x) < 0.1 ? 0 : x;
+    z = Math.abs(z) < 0.1 ? 0 : z;
+    x *= speedModifier;
+    y *= speedModifier;
+    z *= speedModifier;
+    mecanumDrive.driveCartesian(-y, -x, z, gyro.getAngle());
+  }
+
+  public void resetGyro() {
+    gyro.reset();
   }
 }

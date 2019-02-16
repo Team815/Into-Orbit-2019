@@ -10,43 +10,38 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManuallyDecreaseSpeed extends Command {
+public class AdjustMaxSpeed extends Command {
 
-  boolean isFinished;
+  private double speedModifierAdustment;
 
-  public ManuallyDecreaseSpeed() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public AdjustMaxSpeed(double speedModifierAdustment) {
     requires(Robot.drivetrain);
+    this.speedModifierAdustment = speedModifierAdustment;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    isFinished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.drivetrain.speedModifier > .2) {
-      Robot.drivetrain.speedModifier -= .1;
-      isFinished = true;
+    double newSpeedModifier = Robot.drivetrain.speedModifier + speedModifierAdustment;
+    if (newSpeedModifier >= Robot.drivetrain.SPEED_MODIFIER_MIN && newSpeedModifier <= Robot.drivetrain.SPEED_MODIFIER_MAX) {
+      Robot.drivetrain.speedModifier = newSpeedModifier;
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinished;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    if(Robot.drivetrain.speedModifier < .2) {
-      Robot.drivetrain.speedModifier = .205;
-    }
   }
 
   // Called when another command which requires one or more of the same

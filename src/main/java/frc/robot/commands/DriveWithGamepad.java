@@ -9,11 +9,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class DriveWithGamepad extends Command {
   public DriveWithGamepad() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.drivetrain);
   }
 
@@ -26,9 +25,9 @@ public class DriveWithGamepad extends Command {
   @Override
   protected void execute() {
     Robot.drivetrain.drive(
-      Robot.oi.driverController.getRawAxis(0)*Robot.drivetrain.speedModifier,
-      Robot.oi.driverController.getRawAxis(1)*Robot.drivetrain.speedModifier,
-      Robot.oi.driverController.getRawAxis(4)*Robot.drivetrain.speedModifier
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJX),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJY),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_RJX)
     );
   }
 

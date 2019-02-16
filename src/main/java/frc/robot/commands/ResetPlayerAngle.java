@@ -10,11 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManuallyIncreaseSpeed extends Command {
+public class ResetPlayerAngle extends Command {
 
-  boolean isFinished;
-
-  public ManuallyIncreaseSpeed() {
+  public ResetPlayerAngle() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -23,30 +21,23 @@ public class ManuallyIncreaseSpeed extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    isFinished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.drivetrain.speedModifier < 1) {
-      Robot.drivetrain.speedModifier += .1;
-    }
-      isFinished = true;
+    Robot.drivetrain.resetGyro();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinished;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    if(Robot.drivetrain.speedModifier > 1) {
-      Robot.drivetrain.speedModifier = .95;
-    }
   }
 
   // Called when another command which requires one or more of the same
