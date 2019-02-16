@@ -13,8 +13,6 @@ import frc.robot.RobotMap;
 
 public class DriveWithGamepad extends Command {
   public DriveWithGamepad() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.drivetrain);
   }
 
@@ -27,9 +25,9 @@ public class DriveWithGamepad extends Command {
   @Override
   protected void execute() {
     Robot.drivetrain.drive(
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJX)*Robot.drivetrain.speedModifier,
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJY)*Robot.drivetrain.speedModifier,
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_RJX)*Robot.drivetrain.speedModifier
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJX),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_LJY),
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.AXIS_PORT_RJX)
     );
   }
 

@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -18,16 +17,13 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithGamepad;
 
-/**
- * Add your docs here.
- */
 public class Drivetrain extends Subsystem {
 
   public final double SPEED_MODIFIER_MIN = 0.2;
   public final double SPEED_MODIFIER_MAX = 1;
   
   public double speedModifier;
-  MecanumDrive mecanumDrive;
+  private MecanumDrive mecanumDrive;
   private Gyro gyro = new AnalogGyro(0);
 
   public Drivetrain(){
@@ -42,8 +38,6 @@ public class Drivetrain extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new DriveWithGamepad());
   }
 
@@ -51,6 +45,9 @@ public class Drivetrain extends Subsystem {
     y = Math.abs(y) < 0.1 ? 0 : y;
     x = Math.abs(x) < 0.1 ? 0 : x;
     z = Math.abs(z) < 0.1 ? 0 : z;
+    x *= speedModifier;
+    y *= speedModifier;
+    z *= speedModifier;
     mecanumDrive.driveCartesian(-y, -x, z, gyro.getAngle());
   }
 
