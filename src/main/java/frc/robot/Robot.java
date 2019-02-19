@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Hook;
 import frc.robot.subsystems.Ramp;
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static Ramp rampFront;
   public static Ramp rampRear;
+  public static Hook hook;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT, RobotMap.PORT_AXIS_LJY);
     rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
+    hook = new Hook();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

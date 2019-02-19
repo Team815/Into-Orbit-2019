@@ -11,15 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.Hook;
 
-public class Movehook extends Command {
+public class MoveHook extends Command {
+  private boolean isFinished;
 
-  private Hook hook;
-  private int inputPort;
-
-  public Movehook(Hook hook, int inputPort) {
-    this.hook = hook;
-    this.inputPort= inputPort;
-    requires(hook);
+  public MoveHook() {
+    isFinished = false;
+    requires(Robot.hook);
   }
 
   // Called just before this Command runs the first time
@@ -30,13 +27,13 @@ public class Movehook extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    hook.move(Robot.oi.controllerOperator.getRawAxis(inputPort));
+    isFinished = Robot.hook.move();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isFinished;
   }
 
   // Called once after isFinished returns true

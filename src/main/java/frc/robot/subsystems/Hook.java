@@ -9,8 +9,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import frc.robot.commands.MoveHook;
 
 /**
@@ -18,29 +20,44 @@ import frc.robot.commands.MoveHook;
  */
 public class Hook extends Subsystem {
 
-  SpeedControllerGroup motorHook;
-
-  private int inputPort;
-
-  public Hook (int portMotorHook, int inputPort) {
-    WPI_TalonSRX motorHook = new WPI_TalonSRX(portMotorHook);
-    motorHook = new SpeedControllerGroup(motorHook);
-    this.inputPort = inputPort;
-    /*
-    encoderHook = new Encoder(
-      RobotMap.PORT_ENCODER_HOOK[0]
-    );
-
-    encoderMaxValue = 1000;
-    */
+private final int ENCODER_MAX_VALUE = 1000;
+private final int ENCODER_MIN_VALUE = 0;
+private Encoder encoder;
+private WPI_TalonSRX motorHook;
+  public Hook () {
+    motorHook = new WPI_TalonSRX(RobotMap.PORT_MOTOR_HOOK);
+    encoder = new Encoder(RobotMap.PORT_ENCODER_HOOK[0], RobotMap.PORT_ENCODER_HOOK[1]);
   }
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new MoveHook(this, inputPort));
+    setDefaultCommand(new MoveHook());
   }
 
-  public void move(double speed) {
-    speed = Math.abs(speed) < 0.1 ? 0 : speed;
-    motorHook.set(speed);
+  public boolean move() {
+    if(encoder.get() <= ENCODER_MIN_VALUE){
+      return moveUp();
+    }else{
+      return moveDown();
+    }
+  }
+
+  private boolean moveUp() {
+    if(encoder.get() < ENCODER_MAX_VALUE){
+      motorHook.set(.5);
+      return false;
+    }else{
+      motorHook.set(0);
+      return true;
+    }
+  }
+
+  private boolean moveDown() {
+    if(encoder.get() > ENCODER_MIN_VALUE){
+      motorHook.set(.5);
+      return false;
+    }else{
+      motorHook.set(0);
+      return true;
+    }
   }
 }
