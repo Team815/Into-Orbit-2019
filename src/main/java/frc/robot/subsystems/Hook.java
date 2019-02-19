@@ -34,6 +34,10 @@ public class Hook extends Subsystem {
     setDefaultCommand(new MoveHook());
   }
 
+  public void moveManually(double speed) {
+    motorHook.set(speed);
+  }
+
   public boolean move() {
     if(encoder.get() <= ENCODER_MIN_VALUE){
       return moveUp();
