@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.MoveHook;
@@ -20,14 +19,16 @@ import frc.robot.commands.MoveHook;
  */
 public class Hook extends Subsystem {
 
-private final int ENCODER_MAX_VALUE = 1000;
-private final int ENCODER_MIN_VALUE = 0;
-private Encoder encoder;
-private WPI_TalonSRX motorHook;
+  private final int ENCODER_MAX_VALUE = 1000;
+  private final int ENCODER_MIN_VALUE = 0;
+  private Encoder encoder;
+  private WPI_TalonSRX motorHook;
+
   public Hook () {
     motorHook = new WPI_TalonSRX(RobotMap.PORT_MOTOR_HOOK);
     encoder = new Encoder(RobotMap.PORT_ENCODER_HOOK[0], RobotMap.PORT_ENCODER_HOOK[1]);
   }
+  
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new MoveHook());
