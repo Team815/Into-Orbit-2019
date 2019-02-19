@@ -44,6 +44,29 @@ public class Ramp extends Subsystem {
     */
   }
 
+  public Ramp (int portMotorLeft1, int portMotorLeft2, int portMotorRight1, int portMotorRight2, int inputPort) {
+    WPI_TalonSRX motorLeft1 = new WPI_TalonSRX(portMotorLeft1);
+    WPI_TalonSRX motorLeft2 = new WPI_TalonSRX(portMotorLeft2);
+    WPI_TalonSRX motorRight1 = new WPI_TalonSRX(portMotorRight1);
+    WPI_TalonSRX motorRight2 = new WPI_TalonSRX(portMotorRight2);
+    motorLeft1.setInverted(true);
+    motorLeft2.setInverted(true);
+    motors = new SpeedControllerGroup(motorLeft1, motorLeft2, motorRight1, motorRight2);
+    this.inputPort = inputPort;
+    /*
+    encoderRight = new Encoder(
+      RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[0], 
+      RobotMap.ENCODER_PORT_REAR_RAMP_RIGHT[1]
+    );
+
+    encoderLeft = new Encoder(
+      RobotMap.ENCODER_PORT_REAR_RAMP_LEFT[0], 
+      RobotMap.ENCODER_PORT_REAR_RAMP_LEFT[1]
+    );
+    encoderMaxValue = 1000;
+    */
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new MoveRamp(this, inputPort));
