@@ -40,10 +40,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     drivetrain = new Drivetrain();
-    oi = new OI();
     rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_2, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_2, RobotMap.PORT_AXIS_LJY);
     rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
     hook = new Hook();
+    oi = new OI();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

@@ -12,7 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.MoveHook;
+import frc.robot.commands.MoveHookManually;
 
 /**
  * Add your docs here.
@@ -31,12 +31,12 @@ public class Hook extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new MoveHook());
+    setDefaultCommand(new MoveHookManually());
   }
 
   public void moveManually(double speed) {
     if (speed > .1)
-      motorHook.set(speed*.5);
+      motorHook.set(speed*.25);
   }
 
   public boolean move() {

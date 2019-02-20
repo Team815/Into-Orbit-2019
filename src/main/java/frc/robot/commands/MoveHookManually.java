@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class MoveHookManually extends Command {
   public MoveHookManually() {
@@ -25,8 +26,8 @@ public class MoveHookManually extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hook.moveManually(Robot.oi.controllerOperator.getRawAxis(2));
-    Robot.hook.moveManually(Robot.oi.controllerOperator.getRawAxis(3));
+    double movement = Robot.oi.controllerOperator.getRawAxis(RobotMap.PORT_AXIS_LT) - Robot.oi.controllerOperator.getRawAxis(RobotMap.PORT_AXIS_RT);
+    Robot.hook.moveManually(movement);
   }
 
   // Make this return true when this Command no longer needs to run execute()
