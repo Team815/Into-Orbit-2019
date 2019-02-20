@@ -10,11 +10,11 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.RobotMap;
+import frc.robot.Sensors;
 import frc.robot.commands.DriveWithGamepad;
 
 public class Drivetrain extends PIDSubsystem {
@@ -23,9 +23,10 @@ public class Drivetrain extends PIDSubsystem {
   public final double SPEED_MODIFIER_MAX = 1;
   
   public double speedModifier;
+  private double correction = 0;
+  private double angleOffset = 0;
   private MecanumDrive mecanumDrive;
-  private Gyro gyro = new AnalogGyro(0);
-  double correction = 0;
+  private Gyro gyro;
 
   public Drivetrain(){
     super(0.01, 0, 0);
@@ -35,6 +36,7 @@ public class Drivetrain extends PIDSubsystem {
     final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_RIGHT, MotorType.kBrushless);
 
     mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
+    gyro = Sensors.gyro;
     setSetpoint(gyro.getAngle());
     enable();
     speedModifier = 1;
@@ -52,18 +54,20 @@ public class Drivetrain extends PIDSubsystem {
     x *= speedModifier;
     y *= speedModifier;
     z *= speedModifier;
-    
+    double currentAngle = gyro.getAngle();
+
     if (z == 0) {
       z = correction;
     } else {
-      setSetpoint(gyro.getAngle());
+      setSetpoint(currentAngle);
     }
 
-    mecanumDrive.driveCartesian(-y, -x, z, gyro.getAngle());
+    mecanumDrive.driveCartesian(-y, -x, z, currentAngle - angleOffset);
   }
 
-  public void resetGyro() {
-    gyro.reset();
+  public void resetPlayerAngle() {
+    angleOffset = gyro.getAngle();
+    setSetpoint(gyro.getAngle());
   }
 
   @Override
