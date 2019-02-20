@@ -24,7 +24,6 @@ public class Drivetrain extends Subsystem {
   
   public double speedModifier;
   private MecanumDrive mecanumDrive;
-  private Gyro gyro = new AnalogGyro(0);
 
   public Drivetrain(){
     final CANSparkMax motorFrontLeft = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_FRONT_LEFT, MotorType.kBrushless);
@@ -41,17 +40,13 @@ public class Drivetrain extends Subsystem {
     setDefaultCommand(new DriveWithGamepad());
   }
 
-  public void drive(double y, double x, double z) {
+  public void drive(double y, double x, double z, double currentAngle) {
     y = Math.abs(y) < 0.1 ? 0 : y;
     x = Math.abs(x) < 0.1 ? 0 : x;
     z = Math.abs(z) < 0.1 ? 0 : z;
     x *= speedModifier;
     y *= speedModifier;
     z *= speedModifier;
-    mecanumDrive.driveCartesian(-y, -x, z, gyro.getAngle());
-  }
-
-  public void resetGyro() {
-    gyro.reset();
+    mecanumDrive.driveCartesian(-y, -x, z, currentAngle);
   }
 }

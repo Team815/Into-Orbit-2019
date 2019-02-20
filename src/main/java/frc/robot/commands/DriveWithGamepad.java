@@ -14,6 +14,7 @@ import frc.robot.RobotMap;
 public class DriveWithGamepad extends Command {
   public DriveWithGamepad() {
     requires(Robot.drivetrain);
+    requires(Robot.positionTracker);
   }
 
   // Called just before this Command runs the first time
@@ -27,7 +28,8 @@ public class DriveWithGamepad extends Command {
     Robot.drivetrain.drive(
       Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJX),
       Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJY),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_RJX)
+      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_RJX),
+      Robot.positionTracker.getAngle()
     );
   }
 

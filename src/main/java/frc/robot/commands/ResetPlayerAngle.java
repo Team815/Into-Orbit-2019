@@ -15,7 +15,7 @@ public class ResetPlayerAngle extends Command {
   public ResetPlayerAngle() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    requires(Robot.positionTracker);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class ResetPlayerAngle extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.resetGyro();
+    Robot.positionTracker.resetGyro();
   }
 
   // Make this return true when this Command no longer needs to run execute()
