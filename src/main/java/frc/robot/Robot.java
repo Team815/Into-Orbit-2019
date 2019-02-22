@@ -16,6 +16,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Hook;
 import frc.robot.subsystems.PositionTracker;
 import frc.robot.subsystems.Ramp;
+import frc.robot.subsystems.RampRear;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,7 +30,7 @@ public class Robot extends TimedRobot {
   public static PositionTracker positionTracker;
   public static OI oi;
   public static Ramp rampFront;
-  public static Ramp rampRear;
+  public static RampRear rampRear;
   public static Hook hook;
 
   Command m_autonomousCommand;
@@ -44,7 +45,7 @@ public class Robot extends TimedRobot {
     drivetrain = new Drivetrain();
     positionTracker = new PositionTracker();
     rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_2, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_2, RobotMap.PORT_AXIS_LJY);
-    rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
+    rampRear = new RampRear();
     hook = new Hook();
     oi = new OI();
     SmartDashboard.putData("Auto mode", m_chooser);

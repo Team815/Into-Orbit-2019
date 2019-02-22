@@ -67,8 +67,8 @@ public class RobotMap {
   public static final int PORT_MOTOR_HOOK = 7;
 
   public static final int[] PORT_ENCODER_RAMP_REAR_RIGHT = {0,1};
-  public static final int[] PORT_ENCODER_RAMP_REAR_LEFT = {7,8};
-  public static final int[] PORT_ENCODER_HOOK = {0,1};
+  public static final int[] PORT_ENCODER_RAMP_REAR_LEFT = {4,5};
+  public static final int[] PORT_ENCODER_HOOK = {8,9};
 
   public static final int[] PORT_ENCODER_DRIVE_HORIZONTAL = { 2, 3 };
   public static final int[] PORT_ENCODER_DRIVE_VERTICAL = { 6, 7 };
