@@ -9,11 +9,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.subsystems.Ramp;
 
-public class DriveWithGamepad extends Command {
-  public DriveWithGamepad() {
-    requires(Robot.drivetrain);
+public class MoveRamp extends Command {
+
+  private Ramp ramp;
+  private int inputPort;
+  
+  public MoveRamp(Ramp ramp, int inputPort) {
+    this.ramp = ramp;
+    this.inputPort = inputPort;
+    requires(ramp);
   }
 
   // Called just before this Command runs the first time
@@ -24,11 +30,7 @@ public class DriveWithGamepad extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.drive(
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJX),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJY),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_RJX)
-    );
+    ramp.move(Robot.oi.controllerOperator.getRawAxis(inputPort));
   }
 
   // Make this return true when this Command no longer needs to run execute()

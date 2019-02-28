@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class DriveWithGamepad extends Command {
-  public DriveWithGamepad() {
-    requires(Robot.drivetrain);
+public class MoveHookManually extends Command {
+  public MoveHookManually() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.hook);
   }
 
   // Called just before this Command runs the first time
@@ -24,17 +26,14 @@ public class DriveWithGamepad extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.drive(
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJX),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_LJY),
-      Robot.oi.controllerDriver.getRawAxis(RobotMap.PORT_AXIS_RJX)
-    );
+    double movement = Robot.oi.controllerOperator.getRawAxis(RobotMap.PORT_AXIS_LT) - Robot.oi.controllerOperator.getRawAxis(RobotMap.PORT_AXIS_RT);
+    Robot.hook.moveManually(movement);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
