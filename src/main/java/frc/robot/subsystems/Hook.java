@@ -35,7 +35,7 @@ public class Hook extends Subsystem {
   }
 
   public void moveManually(double speed) {
-    if (speed > .1)
+    if (Math.abs(speed) > .1)
       motorHook.set(speed*.25);
   }
 
