@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
 import frc.robot.commands.MoveHook;
 import frc.robot.commands.ResetPlayerAngle;
+import frc.robot.commands.SetRampColor;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,26 +52,21 @@ public class OI {
 
   public Joystick controllerDriver = new Joystick(0);
   public Joystick controllerOperator = new Joystick(1);
-  public Button LB;
-  public Button RB;
-  public Button B;
-  public Button A;
-
+  public Button driverLB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_LB);
+  public Button driverRB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
+  public Button driverB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
+  public Button driverA = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_A);
+  public Button operatorX = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_X);
+  public Button operatorB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
   
   public OI (){
-    LB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_LB);
-    RB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
-    B = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
-    //DpadUp = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadUp);
-    //DpadDown = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadDown);
-    A = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_A);
 
-    LB.whenPressed(new AdjustMaxSpeed(-0.1));
-    RB.whenPressed(new AdjustMaxSpeed(0.1));
-    B.whenPressed(new ResetPlayerAngle());
-    //DpadUp.whenPressed(new RaiseRearRamp());
-    //DpadDown.whenPressed(new LowerRearRamp());
-    A.whenPressed(new MoveHook());
+    driverLB.whenPressed(new AdjustMaxSpeed(-0.1));
+    driverRB.whenPressed(new AdjustMaxSpeed(0.1));
+    driverB.whenPressed(new ResetPlayerAngle());
+    driverA.whenPressed(new MoveHook());
+    operatorX.whenPressed(new SetRampColor(SetRampColor.Color.BLUE));
+    operatorB.whenPressed(new SetRampColor(SetRampColor.Color.RED));
   }
 
 }
