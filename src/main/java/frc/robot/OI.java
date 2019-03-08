@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
+import frc.robot.commands.Align;
 import frc.robot.commands.MoveHook;
 import frc.robot.commands.ResetPlayerAngle;
 import frc.robot.commands.SetRampColor;
@@ -56,6 +57,7 @@ public class OI {
   public Button driverRB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
   public Button driverB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
   public Button driverA = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_A);
+  public Button driverX = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_X);
   public Button operatorX = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_X);
   public Button operatorB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
   
@@ -65,6 +67,7 @@ public class OI {
     driverRB.whenPressed(new AdjustMaxSpeed(0.1));
     driverB.whenPressed(new ResetPlayerAngle());
     driverA.whenPressed(new MoveHook());
+    driverX.whenActive(new Align());
     operatorX.whenPressed(new SetRampColor(SetRampColor.Color.BLUE));
     operatorB.whenPressed(new SetRampColor(SetRampColor.Color.RED));
   }
