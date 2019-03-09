@@ -72,4 +72,6 @@ public class RobotMap {
 
   public static final int[] PORT_ENCODER_DRIVE_HORIZONTAL = { 2, 3 };
   public static final int[] PORT_ENCODER_DRIVE_VERTICAL = { 6, 7 };
+
+  public static final int PORT_LIMITSWITCH_HOOK = 0;
 }

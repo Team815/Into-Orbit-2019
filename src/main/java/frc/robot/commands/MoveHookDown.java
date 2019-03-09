@@ -7,13 +7,19 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class MoveHook extends Command {
+public class MoveHookDown extends Command {
+  private final int TIMEOUT = 2;
   private boolean isFinished;
+  private Timer timer;
 
-  public MoveHook() {
+  public MoveHookDown() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    timer = new Timer();
     isFinished = false;
     requires(Robot.hook);
   }
@@ -21,28 +27,42 @@ public class MoveHook extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    timer.start();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    isFinished = Robot.hook.move();
+    if (Robot.hook.hasBeenReset) {
+      isFinished = Robot.hook.moveDown();
+    }
+    else isFinished = true;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinished;
+    if(timerHasReachedTimeout()) {
+      return true;
+    }
+    else return isFinished;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.hook.stopHook();
+    timer.stop();
+    timer.reset();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+  }
+
+  private boolean timerHasReachedTimeout() {
+    return timer.get() > TIMEOUT ? true:false;
   }
 }
