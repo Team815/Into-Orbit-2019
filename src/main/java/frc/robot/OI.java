@@ -10,11 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.AdjustMaxSpeed;
 import frc.robot.commands.MoveHookDown;
 import frc.robot.commands.MoveHookUp;
-import frc.robot.commands.ResetPlayerAngle;
-import frc.robot.commands.SetRampColor;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -53,7 +50,7 @@ public class OI {
 
   public Joystick controllerDriver = new Joystick(0);
   public Joystick controllerOperator = new Joystick(1);
-  
+
   public Button driverLB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_LB);
   public Button driverRB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
   public Button driverB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
@@ -65,14 +62,8 @@ public class OI {
   public Button operatorA = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
   
   public OI (){
-    driverLB.whenPressed(new AdjustMaxSpeed(-0.1));
-    driverRB.whenPressed(new AdjustMaxSpeed(0.1));
-    driverB.whenPressed(new ResetPlayerAngle());
-
     operatorY.whenPressed(new MoveHookUp());
     operatorA.whenPressed(new MoveHookDown());
-    operatorX.whenPressed(new SetRampColor(SetRampColor.Color.BLUE));
-    operatorB.whenPressed(new SetRampColor(SetRampColor.Color.RED));
   }
 
 }

@@ -52,26 +52,26 @@ public class RobotMap {
   public static int PORT_DPAD_UP_LEFT;
 
   
-  public static final int PORT_MOTOR_DRIVE_FRONT_RIGHT = 3;
-	public static final int PORT_MOTOR_DRIVE_REAR_RIGHT = 1;
-	public static final int PORT_MOTOR_DRIVE_FRONT_LEFT = 4;
-  public static final int PORT_MOTOR_DRIVE_REAR_LEFT = 2;
+  // public static final int PORT_MOTOR_DRIVE_FRONT_RIGHT = 3;
+	// public static final int PORT_MOTOR_DRIVE_REAR_RIGHT = 1;
+	// public static final int PORT_MOTOR_DRIVE_FRONT_LEFT = 4;
+  // public static final int PORT_MOTOR_DRIVE_REAR_LEFT = 2;
 
-  public static final int PORT_MOTOR_RAMP_FRONT_LEFT_1 = 1;
-  public static final int PORT_MOTOR_RAMP_FRONT_LEFT_2 = 2;
-  public static final int PORT_MOTOR_RAMP_FRONT_RIGHT_1 = 3;
-  public static final int PORT_MOTOR_RAMP_FRONT_RIGHT_2 = 4;
-  public static final int PORT_MOTOR_RAMP_REAR_LEFT = 5;
-  public static final int PORT_MOTOR_RAMP_REAR_RIGHT = 6;
+  // public static final int PORT_MOTOR_RAMP_FRONT_LEFT_1 = 1;
+  // public static final int PORT_MOTOR_RAMP_FRONT_LEFT_2 = 2;
+  // public static final int PORT_MOTOR_RAMP_FRONT_RIGHT_1 = 3;
+  // public static final int PORT_MOTOR_RAMP_FRONT_RIGHT_2 = 4;
+  // public static final int PORT_MOTOR_RAMP_REAR_LEFT = 5;
+  // public static final int PORT_MOTOR_RAMP_REAR_RIGHT = 6;
 
-  public static final int PORT_MOTOR_HOOK = 7;
+  public static final int PORT_MOTOR_HOOK = 3;
 
-  public static final int[] PORT_ENCODER_RAMP_REAR_RIGHT = {0,1};
-  public static final int[] PORT_ENCODER_RAMP_REAR_LEFT = {7,8};
-  public static final int[] PORT_ENCODER_HOOK = {0,1};
+  // public static final int[] PORT_ENCODER_RAMP_REAR_RIGHT = {0,1};
+  // public static final int[] PORT_ENCODER_RAMP_REAR_LEFT = {7,8};
+  public static final int[] PORT_ENCODER_HOOK = {6,7};
 
-  public static final int[] PORT_ENCODER_DRIVE_HORIZONTAL = { 2, 3 };
-  public static final int[] PORT_ENCODER_DRIVE_VERTICAL = { 6, 7 };
+  // public static final int[] PORT_ENCODER_DRIVE_HORIZONTAL = { 2, 3 };
+  // public static final int[] PORT_ENCODER_DRIVE_VERTICAL = { 6, 7 };
 
-  public static final int PORT_LIMITSWITCH_HOOK = 0;
+  public static final int PORT_LIMITSWITCH_HOOK = 15;
 }
