@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hook;
 
 public class MoveHookUp extends Command {
   private final int TIMEOUT = 2;
@@ -32,8 +33,8 @@ public class MoveHookUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.hook.hasBeenReset) {
-      isFinished = Robot.hook.moveUp();
+    if (Robot.hook.getEncoderValue() < Hook.ENCODER_MAX_VALUE && Robot.hook.hasBeenReset) {
+      Robot.hook.moveUp();
     }
     else isFinished = true;
   }
