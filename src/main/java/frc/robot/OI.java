@@ -61,18 +61,18 @@ public class OI {
 
   public Button operatorX = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_X);
   public Button operatorB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
-  public Button operatorY = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
-  public Button operatorA = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
+  public Button operatorLB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_LB);
+  public Button operatorRB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_RB);
   
   public OI (){
     driverLB.whenPressed(new AdjustMaxSpeed(-0.1));
     driverRB.whenPressed(new AdjustMaxSpeed(0.1));
     driverB.whenPressed(new ResetPlayerAngle());
 
-    operatorY.whenPressed(new MoveHookUp());
-    operatorA.whenPressed(new MoveHookDown());
     operatorX.whenPressed(new SetRampColor(SetRampColor.Color.BLUE));
     operatorB.whenPressed(new SetRampColor(SetRampColor.Color.RED));
+    operatorLB.whenPressed(new MoveHookUp());
+    operatorRB.whenPressed(new MoveHookDown());
   }
 
 }
