@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
 import frc.robot.commands.MoveHook;
 import frc.robot.commands.ResetPlayerAngle;
+import frc.robot.commands.ToggleLatch;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -70,7 +71,7 @@ public class OI {
     B.whenPressed(new ResetPlayerAngle());
     //DpadUp.whenPressed(new RaiseRearRamp());
     //DpadDown.whenPressed(new LowerRearRamp());
-    A.whenPressed(new MoveHook());
+    A.whenPressed(new ToggleLatch());
   }
 
 }
