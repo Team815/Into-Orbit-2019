@@ -19,7 +19,7 @@ import frc.robot.commands.MoveHookManually;
  */
 public class Hook extends Subsystem {
 
-  public static final int ENCODER_MAX_VALUE = 1000;
+  public static final int ENCODER_MAX_VALUE = 1200;
   public boolean hasBeenReset;
   private Encoder encoder;
   private DigitalInput limitSwitch;
@@ -40,7 +40,7 @@ public class Hook extends Subsystem {
   
   public void moveManually(double speed) {
     speed = Math.abs(speed) > .1 ? speed : 0;
-    motorHook.set(speed*.5);
+    motorHook.set(speed*.25);
   }
   
   public void moveUp() {
