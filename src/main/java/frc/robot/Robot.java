@@ -128,7 +128,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     // System.out.println(hook.getEncoderValue());
-    System.out.println("Limit switch is pressed: " + hook.limitSwitchIsPressed());
+    System.out.println(hook.getEncoderValue() + " ;\t" + hook.limitSwitchIsPressed());
   }
 
   /**

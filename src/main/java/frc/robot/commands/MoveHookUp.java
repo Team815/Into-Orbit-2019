@@ -54,6 +54,7 @@ public class MoveHookUp extends Command {
     Robot.hook.stopHook();
     timer.stop();
     timer.reset();
+    System.out.println("MoveUp isFinished");
   }
 
   // Called when another command which requires one or more of the same

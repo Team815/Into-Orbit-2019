@@ -40,7 +40,11 @@ public class Hook extends Subsystem {
   
   public void moveManually(double speed) {
     speed = Math.abs(speed) > .1 ? speed : 0;
-    motorHook.set(speed*.25);
+    motorHook.set(speed*.5);
+    if (limitSwitchIsPressed()){
+      resetEncoderValue();
+      hasBeenReset = true;
+    }
   }
   
   public void moveUp() {
@@ -57,6 +61,10 @@ public class Hook extends Subsystem {
 
   public int getEncoderValue() {
     return encoder.get();
+  }
+
+  public void resetEncoderValue() {
+    encoder.reset();
   }
 
   public boolean limitSwitchIsPressed() {
