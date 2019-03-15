@@ -34,8 +34,8 @@ public class Drivetrain extends PIDSubsystem {
     final CANSparkMax motorFrontRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_FRONT_RIGHT, MotorType.kBrushless);
     final CANSparkMax motorRearLeft = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_LEFT, MotorType.kBrushless);
     final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_RIGHT, MotorType.kBrushless);
-
     mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
+
     gyro = Sensors.gyro;
     setSetpoint(gyro.getAngle());
     enable();
