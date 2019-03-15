@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
+import frc.robot.commands.AutoDriveBackwards;
+import frc.robot.commands.AutoDriveForward;
 import frc.robot.commands.MoveHook;
 import frc.robot.commands.ResetPlayerAngle;
 
@@ -19,8 +21,6 @@ import frc.robot.commands.ResetPlayerAngle;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-
-	
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -55,22 +55,23 @@ public class OI {
   public Button RB;
   public Button B;
   public Button A;
+  public Button SELECT;
+  public Button START;
 
-  
-  public OI (){
+  public OI() {
     LB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_LB);
     RB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_RB);
     B = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
-    //DpadUp = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadUp);
-    //DpadDown = new JoystickButton(controllerOperator, RobotMap.buttonPortDpadDown);
     A = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_A);
+    SELECT = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_SELECT);
+    START = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_START);
 
     LB.whenPressed(new AdjustMaxSpeed(-0.1));
     RB.whenPressed(new AdjustMaxSpeed(0.1));
     B.whenPressed(new ResetPlayerAngle());
-    //DpadUp.whenPressed(new RaiseRearRamp());
-    //DpadDown.whenPressed(new LowerRearRamp());
     A.whenPressed(new MoveHook());
+    SELECT.whileHeld(new AutoDriveForward());
+    START.whileHeld(new AutoDriveBackwards());
   }
 
 }
