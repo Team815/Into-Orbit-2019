@@ -18,11 +18,11 @@ import frc.robot.commands.MoveRamp;
  */
 public class Ramp extends Subsystem {
 
-  SpeedControllerGroup motors;
+  protected SpeedControllerGroup motors;
   //Encoder encoderRight;
   //Encoder encoderLeft;
   //private int encoderMaxValue;
-  private int inputPort;
+  protected int inputPort;
 
   public Ramp (int portMotorLeft, int portMotorRight, int inputPort) {
     WPI_TalonSRX motorLeft = new WPI_TalonSRX(portMotorLeft);
