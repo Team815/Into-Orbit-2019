@@ -65,6 +65,16 @@ public class Drivetrain extends PIDSubsystem {
     mecanumDrive.driveCartesian(-y, -x, z, currentAngle - angleOffset);
   }
 
+  public void driveRaw(double y, double x, double z) {
+    y = Math.abs(y) < 0.1 ? 0 : y;
+    x = Math.abs(x) < 0.1 ? 0 : x;
+    z = Math.abs(z) < 0.1 ? 0 : z;
+    x *= speedModifier;
+    y *= speedModifier;
+    z *= speedModifier;
+    mecanumDrive.driveCartesian(-y, -x, z);
+  }
+
   public void resetPlayerAngle() {
     angleOffset = gyro.getAngle();
     setSetpoint(gyro.getAngle());

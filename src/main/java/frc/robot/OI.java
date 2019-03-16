@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AdjustMaxSpeed;
 import frc.robot.commands.Align;
-import frc.robot.commands.MoveHook;
+import frc.robot.commands.AutoDriveBackwards;
+import frc.robot.commands.AutoDriveForward;
 import frc.robot.commands.OpenLatch;
 import frc.robot.commands.ResetPlayerAngle;
 import frc.robot.commands.SetRampColor;
@@ -22,8 +23,6 @@ import frc.robot.commands.SetRampColor;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-
-	
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -59,16 +58,19 @@ public class OI {
   public Button driverA = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_A);
   public Button driverB = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_B);
   public Button driverX = new JoystickButton(controllerDriver, RobotMap.PORT_BUTTON_X);
+  public AnalogButton driverRT = new AnalogButton(controllerDriver, RobotMap.PORT_AXIS_RT);
+  public AnalogButton driverLT = new AnalogButton(controllerDriver, RobotMap.PORT_AXIS_LT);
   public Button operatorA = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_A);
   public Button operatorB = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_B);
   public Button operatorX = new JoystickButton(controllerOperator, RobotMap.PORT_BUTTON_X);
   
   public OI (){
-
-    driverLB.whenPressed(new AdjustMaxSpeed(-0.1));
-    driverRB.whenPressed(new AdjustMaxSpeed(0.1));
+    driverLB.whenPressed(new AdjustMaxSpeed(-0.4));
+    driverRB.whenPressed(new AdjustMaxSpeed(0.4));
     driverA.whenPressed(new Align());
     driverB.whenPressed(new ResetPlayerAngle());
+    driverRT.whileActive(new AutoDriveForward());
+    driverLT.whileActive(new AutoDriveBackwards());
     //driverX.whenActive(new MoveHook());
     operatorA.whenPressed(new OpenLatch());
     operatorB.whenPressed(new SetRampColor(SetRampColor.Color.RED));

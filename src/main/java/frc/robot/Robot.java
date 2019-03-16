@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    CameraServer.getInstance().startAutomaticCapture();
     drivetrain = new Drivetrain();
     rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_2, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_2, RobotMap.PORT_AXIS_LJY);
     rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
