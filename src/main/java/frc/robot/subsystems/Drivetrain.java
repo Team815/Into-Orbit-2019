@@ -34,8 +34,8 @@ public class Drivetrain extends PIDSubsystem {
     final CANSparkMax motorFrontRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_FRONT_RIGHT, MotorType.kBrushless);
     final CANSparkMax motorRearLeft = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_LEFT, MotorType.kBrushless);
     final CANSparkMax motorRearRight = new CANSparkMax(RobotMap.PORT_MOTOR_DRIVE_REAR_RIGHT, MotorType.kBrushless);
-
     mecanumDrive = new MecanumDrive(motorFrontRight, motorRearRight, motorFrontLeft, motorRearLeft);
+
     gyro = Sensors.gyro;
     setSetpoint(gyro.getAngle());
     enable();
@@ -63,6 +63,16 @@ public class Drivetrain extends PIDSubsystem {
     }
 
     mecanumDrive.driveCartesian(-y, -x, z, currentAngle - angleOffset);
+  }
+
+  public void driveRaw(double y, double x, double z) {
+    y = Math.abs(y) < 0.1 ? 0 : y;
+    x = Math.abs(x) < 0.1 ? 0 : x;
+    z = Math.abs(z) < 0.1 ? 0 : z;
+    x *= speedModifier;
+    y *= speedModifier;
+    z *= speedModifier;
+    mecanumDrive.driveCartesian(-y, -x, z);
   }
 
   public void resetPlayerAngle() {

@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Hook;
-import frc.robot.subsystems.PositionTracker;
+import frc.robot.subsystems.Latch;
 import frc.robot.subsystems.Ramp;
 
 /**
@@ -26,11 +27,11 @@ import frc.robot.subsystems.Ramp;
  */
 public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
-  public static PositionTracker positionTracker;
   public static OI oi;
   public static Ramp rampFront;
   public static Ramp rampRear;
   public static Hook hook;
+  public static Latch latch;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,11 +42,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    CameraServer.getInstance().startAutomaticCapture();
     drivetrain = new Drivetrain();
-    positionTracker = new PositionTracker();
     rampFront = new Ramp(RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_LEFT_2, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_1, RobotMap.PORT_MOTOR_RAMP_FRONT_RIGHT_2, RobotMap.PORT_AXIS_LJY);
     rampRear = new Ramp(RobotMap.PORT_MOTOR_RAMP_REAR_LEFT, RobotMap.PORT_MOTOR_RAMP_REAR_RIGHT, RobotMap.PORT_AXIS_RJY);
     hook = new Hook();
+    latch = new Latch();
     oi = new OI();
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -90,7 +92,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-
+    drivetrain.resetPlayerAngle();
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -114,7 +116,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    drivetrain.resetPlayerAngle();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
